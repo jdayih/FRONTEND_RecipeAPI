@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <!-- RECIPE CREATE FORM   -->
+  <div>
+    <form id="recipeForm">
+      <h4>Create a new Recipe</h4>
+      <hr>
+      <label for="recipeName"><b>Name</b></label>
+      <input type="text" name="name" placeholder="Enter name" autofocus required>
+      <label for="recipeCalories"><b>Calories</b></label>
+      <input type="number" name="calories" placeholder="Enter calories" min="0" required>
+      <label for="recipePrepTime"><b>Preparation time</b></label>
+      <input type="number" name="prepTime" placeholder="Enter preparation time" required>
+      <label for="recipeServingSize"><b>Serving size</b></label>
+      <input type="number" name="servingSize" placeholder="Enter serving size" required>
+      <hr>
+      <button type="submit" class="registerbtn">Register</button>
+      <button type="reset" class="btn btn-primary">Reset</button>
+  </div>
+  </form>
+
+
+  <!-- RECIPE TABLE -->
+  <div>
+    <table id="myTableID" class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Calories</th>
+          <th scope="col">Preparation Time</th>
+          <th scope="col">Serving size</th>
+          <th id="deleteBtn" scope="col">Delete</th>
+          <th id="updateBtn" scope="col">Update</th>
+        </tr>
+      </thead>
+      <tbody id="output">
+      </tbody>
+    </table>
+  </div>
+
+
+
+ 
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="index.js"></script>
+</body>
+
+</html>
