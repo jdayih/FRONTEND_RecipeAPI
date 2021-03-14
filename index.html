@@ -2,38 +2,56 @@
 <html lang="en">
 
 <head>
+  <link rel="stylesheet" type="text/css" href="index.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
-<body>
-
-  <!-- RECIPE CREATE FORM   -->
+<body id="bodyStyling">
+  <!-- TITLES -->
   <div>
+    <header>
+      <title>Jasmine's Recipe Book API</title>
+      <h1><strong>Jasmine's Recipe Book API</strong></h1>
+      <h5><i>❀ A place to store all of your favourite recipes ❀ </i></h5>
+    </header>
+  </div>
+  
+  <!-- RECIPE CREATE FORM   -->
+  <div id="container">
+  <div id="createForm">
     <form id="recipeForm">
-      <h4>Create a new Recipe</h4>
+      <h4>Create a new recipe:</h4>
       <hr>
+      <div>
       <label for="recipeName"><b>Name</b></label>
       <input type="text" name="name" placeholder="Enter name" autofocus required>
+      </div>
+      <div>
       <label for="recipeCalories"><b>Calories</b></label>
       <input type="number" name="calories" placeholder="Enter calories" min="0" required>
+      </div>
+      <div>
       <label for="recipePrepTime"><b>Preparation time</b></label>
       <input type="number" name="prepTime" placeholder="Enter preparation time" required>
+      </div>
+      <div>
       <label for="recipeServingSize"><b>Serving size</b></label>
       <input type="number" name="servingSize" placeholder="Enter serving size" required>
+      </div>
       <hr>
-      <button type="submit" class="registerbtn">Register</button>
-      <button type="reset" class="btn btn-primary">Reset</button>
+      <button type="submit" id = "registerButton" class="registerbtn">Register</button>
+      <button type="reset" id="resetButton">Reset</button>
   </div>
   </form>
 
 
   <!-- RECIPE TABLE -->
-  <div>
+  <div id="recipeTable">
     <table id="myTableID" class="table">
-      <thead>
+      <thead id="colHeaders">
         <tr>
           <th scope="col">Name</th>
           <th scope="col">Calories</th>
@@ -46,6 +64,7 @@
       <tbody id="output">
       </tbody>
     </table>
+  </div>
   </div>
   
       <!-- UPDATE MODAL -->
@@ -64,24 +83,24 @@
             
               <div class="form-group">
                 <label for="recipeName" class="col-form-label">Name:</label>
-                <input type="text" name = "name" class="form-control" id="name">
+                <input type="text" name = "name" placeholder="Enter name" class="form-control" id="name">
               </div>
               <div class="form-group">
                 <label for="recipeCalories" class="col-form-label">Calories:</label>
-                <textarea class="form-control" name = "calories" id="calories" ></textarea>
+                <textarea class="form-control" placeholder="Enter calories" name = "calories" id="calories" ></textarea>
               </div>
               <div class="form-group">
                 <label for="recipePrepTime" class="col-form-label">Prepation Time:</label>
-                <textarea class="form-control" name = "prepTime" id="prepTime"></textarea>
+                <textarea class="form-control" placeholder="Enter preparation time" name = "prepTime" id="prepTime"></textarea>
               </div>
               <div class="form-group">
                 <label for="recipeServingSize" class="col-form-label">Serving Size:</label>
-                <textarea class="form-control"name = "servingSize" id="servingSize"></textarea>
+                <textarea class="form-control" placeholder="Enter serving size" name = "servingSize" id="servingSize"></textarea>
               </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" id = updateButton >Update</button>
+            <button type="button" id="closeButton" data-dismiss="modal">Close</button>
+            <button type="submit" id = "updateButton" >Update</button>
           </div>
         </form>
         </div>
