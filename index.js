@@ -34,12 +34,29 @@ function renderRecipe(recipe) {
 
     const recipeServingSize = document.createElement("td");
     recipeServingSize.innerText = recipe.servingSize;
+    
+    const deleteButton = document.createElement("td");
+    const deleteBtn = document.createElement("button");
+    deleteBtn.innerText = "Delete";
+    deleteBtn.addEventListener('click', function () {
+    deleteRecipe(recipe.id);
+    });
+    deleteButton.appendChild(deleteBtn);
 
     newRow.appendChild(recipeName);
     newRow.appendChild(recipeCalories);
     newRow.appendChild(recipePrepTime);
-    newRow.appendChild(recipeServingSize)
+    newRow.appendChild(recipeServingSize);
+    newRow.appendChild(deleteButton);
     return newRow;
+}
+
+
+//DELETE FUNCTION
+function deleteRecipe(id) {
+    axios.delete("http://localhost:8080/removeRecipe/" + id)
+        .then(() => getRecipes())
+        .catch(err => console.error(err));
 }
 
 document.getElementById("recipeForm").addEventListener('submit', function (event) {
