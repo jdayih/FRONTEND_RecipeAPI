@@ -2,6 +2,12 @@
 
 const output = document.getElementById("output");
 
+let recipeId;
+
+var recipeModal = new bootstrap.Modal(document.getElementById('recipeModal'), {
+    keyboard: false
+  })
+
 //GET FUNCTION
 function getRecipes() {
     axios.get("http://localhost:8080/getRecipes")
@@ -42,12 +48,23 @@ function renderRecipe(recipe) {
     deleteRecipe(recipe.id);
     });
     deleteButton.appendChild(deleteBtn);
+    
+    //UPDATE BUTTONS BRINGS UP THE RECIPE MODAL
+    const updateButton = document.createElement("td");
+    const updateBtn = document.createElement("button");
+    updateBtn.innerText = "Update";
+    updateBtn.addEventListener('click', function () {
+        $("#recipeModal").modal('show');
+        recipeId = recipe.id;
+    });
+    updateButton.appendChild(updateBtn);
 
     newRow.appendChild(recipeName);
     newRow.appendChild(recipeCalories);
     newRow.appendChild(recipePrepTime);
     newRow.appendChild(recipeServingSize);
     newRow.appendChild(deleteButton);
+    newRow.appendChild(updateButton);
     return newRow;
 }
 
@@ -87,5 +104,31 @@ document.getElementById("recipeForm").addEventListener('submit', function (event
         .catch(err => console.error(err));
 
 });
+
+//FUNCTIONALITY OF THE UPDATE BUTTON IN THE RECIPE MODAL
+document.getElementById("updateForm").addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    console.log("this: ", this);
+    console.log("this.name:", this.name);
+    console.log("this.calories:", this.calories);
+    console.log("this.prepTime:", this.prepTime);
+    console.log("this.servingSize:", this.servingSize);
+
+    const updatedData = {
+        name: this.name.value,
+        calories: this.calories.value,
+        prepTime: this.prepTime.value,
+        servingSize: this.servingSize.value
+    }
+
+    axios.put("http://localhost:8080/updateRecipe/" + recipeId, updatedData)
+    .then(() => {
+        this.reset();
+        recipeModal.toggle();
+        getRecipes();
+    })
+    .catch(err => console.error(err));
+})
 
     getRecipes();
